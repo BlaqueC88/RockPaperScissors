@@ -1,6 +1,26 @@
+const rps = document.querySelector("#rps");
+
+const rock = document.createElement("button");
+const paper = document.createElement("button");
+const scissors = document.createElement("button");
+
+rock.classList.add("rock");
+paper.classList.add("paper");
+scissors.classList.add("scissors");
+
+rock.textContent = "Rock";
+paper.textContent = "Paper";
+scissors.textContent = "Scissors";
+
+rps.appendChild(rock);
+rps.appendChild(paper);
+rps.appendChild(scissors);
+
+
+
 
 let computerChoice = ["rock", "paper", "scissors"]
-let playerChoice = prompt("What's your choice? rock, paper or scissors");
+let playerChoice = 
 
 // Your game is going to play against the computer, so begin with a function called getComputerChoice that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. We’ll use this function in the game to make the computer’s play. Tip: use the console to make sure this is returning the expected output before moving to the next step!
 
@@ -33,19 +53,21 @@ function playRound(playerSelection, computerSelection){
 
 };
 
+
 // Write a NEW function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
 
-function game() {
+// function game() {
   //Play game 5 times
-  for (let i = 0; i < 5; i++){
+  // for (let i = 0; i < 5; i++){
     // Call playRound function, passing in newly returned values
     // from the playerSelection and computerSelecion functions and log to console
-    console.log(playRound(playerSelection(), computerSelection()));
-  }
+    // console.log(playRound(playerSelection(), computerSelection()));
+  // }
 
-}
+// }
 
 
 const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+const computerSelection = 
+console.log();
+
