@@ -66,8 +66,5 @@ function playRound(playerSelection, computerSelection){
 
 // }
 
-
-const playerSelection = "rock";
-const computerSelection = 
-console.log();
+console.log(playerChoice);
 
