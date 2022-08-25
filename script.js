@@ -1,58 +1,60 @@
-const rps = document.querySelector("#rps");
+const playerChoiceDisplay = document.getElementById("player");
+const computerChoiceDisplay = document.getElementById("computer");
+const resultsDisplay = document.getElementById("results");
+const possibleChoices = document.querySelectorAll("button");
 
-const rock = document.createElement("button");
-const paper = document.createElement("button");
-const scissors = document.createElement("button");
+possibleChoices.forEach(possibleChoices => possibleChoices.addEventListener("click", (e) => {
+  playerSelection = e.target.id;
+  playerChoiceDisplay.innerHTML = playerSelection;
+  getComputerChoice();
+  playRound();
+}));
 
-rock.classList.add("rock");
-paper.classList.add("paper");
-scissors.classList.add("scissors");
-
-rock.textContent = "Rock";
-paper.textContent = "Paper";
-scissors.textContent = "Scissors";
-
-rps.appendChild(rock);
-rps.appendChild(paper);
-rps.appendChild(scissors);
-
-
-
-
-let computerChoice = ["rock", "paper", "scissors"]
-let playerChoice = 
-
-// Your game is going to play against the computer, so begin with a function called getComputerChoice that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. We’ll use this function in the game to make the computer’s play. Tip: use the console to make sure this is returning the expected output before moving to the next step!
+let computerChoice;
 
 function getComputerChoice(computerSelection) {
-  computerSelection = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+  computerSelection = Math.floor(Math.random() * possibleChoices.length) + 1
 
-  return computerSelection;
-
+  if (computerSelection === 1){
+    computerChoice = "rock";
+  }
+  else if (computerSelection === 2){
+    computerChoice = "paper";
+  }
+  else if (computerSelection === 3){
+    computerChoice = "scissors";
+  }
+  computerChoiceDisplay.innerHTML = computerChoice;
 };
 
-// Write a function that plays a single round of Rock Paper Scissors. The function should take two parameters - the playerSelection and computerSelection - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
+let playerSelection;
+let results;
 
 function playRound(playerSelection, computerSelection){
   
     if (playerSelection === computerSelection){
-      return "It's a Draw!"
+      results = "It's a Draw!";
     }
     else if (playerSelection === "rock" && computerSelection === "paper"){
-      return "You Lose! Paper beats Rock";
+      results = "You Lose! Paper beats Rock";
     }
     else if (playerSelection === "paper" && computerSelection === "scissors"){
-      return "You Lose! Scissors beats Paper";
+      results = "You Lose! Scissors beats Paper";
     }
     else if (playerSelection === "scissors" && computerSelection === "rock"){
-      return "You Lose! Rock beats Scissors";
+      results = "You Lose! Rock beats Scissors";
     }
-    else {
-      return "You Win!";
+    else if (playerSelection === "paper" && computerSelection === "rock"){
+      results = "You Win! Paper beats Rock";
     }
-
+    else if (playerSelection === "scissors" && computerSelection === "paper"){
+      results = "You Win! Scissors beats Paper";
+    }
+    else if (playerSelection === "rock" && computerSelection === "scissors"){
+      results = "You Win! Rock beats Scissors";
+    }
+    resultsDisplay.innerHTML = results;
 };
-
 
 // Write a NEW function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
 
@@ -66,5 +68,4 @@ function playRound(playerSelection, computerSelection){
 
 // }
 
-console.log(playerChoice);
 
