@@ -3,35 +3,34 @@ const computerChoiceDisplay = document.getElementById("computer");
 const resultsDisplay = document.getElementById("results");
 const possibleChoices = document.querySelectorAll("button");
 
-possibleChoices.forEach(possibleChoices => possibleChoices.addEventListener("click", (e) => {
+let playerSelection; // Global defining of playerSelection
+let computerSelection;
+let results;
+
+possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener("click", (e) => {
   playerSelection = e.target.id;
   playerChoiceDisplay.innerHTML = playerSelection;
   getComputerChoice();
   playRound();
 }));
 
-let computerChoice;
-
-function getComputerChoice(computerSelection) {
-  computerSelection = Math.floor(Math.random() * possibleChoices.length) + 1
-
-  if (computerSelection === 1){
-    computerChoice = "rock";
+function getComputerChoice() {
+  const randomChoice = Math.floor(Math.random() * possibleChoices.length) + 1;
+  
+  if (randomChoice === 1){
+    computerSelection = "rock";
   }
-  else if (computerSelection === 2){
-    computerChoice = "paper";
+  else if (randomChoice === 2){
+    computerSelection = "paper";
   }
-  else if (computerSelection === 3){
-    computerChoice = "scissors";
+  else if (randomChoice === 3){
+    computerSelection = "scissors";
   }
-  computerChoiceDisplay.innerHTML = computerChoice;
+  computerChoiceDisplay.innerHTML = computerSelection;
 };
 
-let playerSelection;
-let results;
+function playRound(){
 
-function playRound(playerSelection, computerSelection){
-  
     if (playerSelection === computerSelection){
       results = "It's a Draw!";
     }
@@ -55,17 +54,3 @@ function playRound(playerSelection, computerSelection){
     }
     resultsDisplay.innerHTML = results;
 };
-
-// Write a NEW function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
-
-// function game() {
-  //Play game 5 times
-  // for (let i = 0; i < 5; i++){
-    // Call playRound function, passing in newly returned values
-    // from the playerSelection and computerSelecion functions and log to console
-    // console.log(playRound(playerSelection(), computerSelection()));
-  // }
-
-// }
-
-
